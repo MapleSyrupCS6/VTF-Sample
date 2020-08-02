@@ -50,7 +50,8 @@
                 v2f o;
 
                 float d = tex2Dlod(_Tex2Dlod, float4(v.texcoord.xy, 0, 0)).r;
-                v.vertex.y += (d * _Scale) - _Scale/2;
+                d = d * 2 - 1;
+                v.vertex.y += d * _Scale;
                 o.vertex = UnityObjectToClipPos(v.vertex);
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
